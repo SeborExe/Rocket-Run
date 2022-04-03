@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
     [SerializeField] AudioClip crashClip, successClip;
+    [SerializeField] ParticleSystem crashParticle, successParticle;
     AudioSource audioSource;
 
     bool isTransitioning = false;
@@ -50,12 +51,14 @@ public class CollisionHandler : MonoBehaviour
         audioSource.Stop();
         GetComponent<Movement>().enabled = false;
         audioSource.PlayOneShot(crashClip);
+        crashParticle.Play();
         Invoke("ReloadLevel", 1.5f);
     }
 
     void StartSuccesSequnce()
     {
         audioSource.PlayOneShot(successClip);
+        successParticle.Play();
         Invoke("LoadNextLevel", 1f);
     }
 
