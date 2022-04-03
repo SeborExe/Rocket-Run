@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
 
     [SerializeField] private float thrustForce = 2f;
     [SerializeField] private float rotateSensivity = 0.3f;
+    [SerializeField] AudioClip mainEngine;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -28,7 +29,7 @@ public class Movement : MonoBehaviour
             rb.AddRelativeForce(Vector3.up * thrustForce);
 
             if (!audioSource.isPlaying)
-                audioSource.Play();
+                audioSource.PlayOneShot(mainEngine);
         }
         else
         {
