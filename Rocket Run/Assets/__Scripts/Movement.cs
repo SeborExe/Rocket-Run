@@ -10,6 +10,9 @@ public class Movement : MonoBehaviour
     [SerializeField] private float thrustForce = 2f;
     [SerializeField] private float rotateSensivity = 0.3f;
     [SerializeField] AudioClip mainEngine;
+
+    [SerializeField] ParticleSystem mainThrusterParticle, rightThrusterParticle, leftThrusterParticle;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -26,14 +29,12 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddRelativeForce(Vector3.up * thrustForce);
-
-            if (!audioSource.isPlaying)
-                audioSource.PlayOneShot(mainEngine);
+            StartThrusting();
         }
         else
         {
             audioSource.Stop();
+            mainThrusterParticle.Stop();
         }
     }
 
@@ -42,12 +43,29 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.A))
         {
             ApplyRotation(rotateSensivity);
+            leftThrusterParticle.Play();
         }
 
         else if (Input.GetKey(KeyCode.D))
         {
             ApplyRotation(-rotateSensivity);
+            rightThrusterParticle.Play();
         }
+
+        else
+        {
+            rightThrusterParticle.Stop();
+            leftThrusterParticle.Stop();
+        }
+    }
+
+    void StartThrusting()
+    {
+        rb.AddRelativeForce(Vector3.up * thrustForce);
+        mainThrusterParticle.Play();
+
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(mainEngine);
     }
 
     private void ApplyRotation(float rotationPower)
