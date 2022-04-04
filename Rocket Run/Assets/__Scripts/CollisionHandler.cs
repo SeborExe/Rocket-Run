@@ -40,6 +40,7 @@ public class CollisionHandler : MonoBehaviour
 
             default:
                 isCrashed = true;
+                isTransitioning = true;
                 StartCrashSequence();
                 break;
         }
@@ -47,9 +48,7 @@ public class CollisionHandler : MonoBehaviour
 
     void StartCrashSequence()
     {
-        isTransitioning = true;
-        audioSource.Stop();
-        GetComponent<Movement>().enabled = false;
+        CheckingResult();
         audioSource.PlayOneShot(crashClip);
         crashParticle.Play();
         Invoke("ReloadLevel", 1.5f);
@@ -57,6 +56,7 @@ public class CollisionHandler : MonoBehaviour
 
     void StartSuccesSequnce()
     {
+        isTransitioning = true;
         audioSource.PlayOneShot(successClip);
         successParticle.Play();
         Invoke("LoadNextLevel", 1f);
@@ -64,9 +64,8 @@ public class CollisionHandler : MonoBehaviour
 
     IEnumerator CheckResult()
     {
-        isTransitioning = true;
-        audioSource.Stop();
-        GetComponent<Movement>().enabled = false;
+        CheckingResult();
+
         for (int i = 3; i > 0; i--)
         {
             yield return new WaitForSeconds(1f);
@@ -75,6 +74,15 @@ public class CollisionHandler : MonoBehaviour
 
         if (!isCrashed)
             StartSuccesSequnce();
+
+        else if (isCrashed)
+            StartCrashSequence();
+    }
+
+    void CheckingResult()
+    {
+        audioSource.Stop();
+        GetComponent<Movement>().enabled = false;
     }
 
     private void ReloadLevel()

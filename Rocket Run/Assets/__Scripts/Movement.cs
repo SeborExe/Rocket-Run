@@ -29,11 +29,7 @@ public class Movement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            rb.AddRelativeForce(Vector3.up * thrustForce);
-            mainThrusterParticle.Play();
-
-            if (!audioSource.isPlaying)
-                audioSource.PlayOneShot(mainEngine);
+            StartThrusting();
         }
         else
         {
@@ -61,6 +57,15 @@ public class Movement : MonoBehaviour
             rightThrusterParticle.Stop();
             leftThrusterParticle.Stop();
         }
+    }
+
+    void StartThrusting()
+    {
+        rb.AddRelativeForce(Vector3.up * thrustForce);
+        mainThrusterParticle.Play();
+
+        if (!audioSource.isPlaying)
+            audioSource.PlayOneShot(mainEngine);
     }
 
     private void ApplyRotation(float rotationPower)
