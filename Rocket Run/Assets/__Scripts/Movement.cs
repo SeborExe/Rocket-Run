@@ -13,10 +13,21 @@ public class Movement : MonoBehaviour
 
     [SerializeField] ParticleSystem mainThrusterParticle, rightThrusterParticle, leftThrusterParticle;
 
+    public bool thrust { get; set; }
+    public bool leftRot { get; set; }
+    public bool rightRot { get; set; }
+
+    public float thrustForcePower { get => thrustForce; set => thrustForce = value; }
+    public float rotateSensivityValue { get => rotateSensivity; set => rotateSensivity = value; }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
+        thrust = false;
+        leftRot = false;
+        rightRot = false;
     }
 
     void FixedUpdate()
@@ -27,7 +38,7 @@ public class Movement : MonoBehaviour
 
     void ProcessThrust()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) || thrust)
         {
             StartThrusting();
         }
@@ -40,13 +51,13 @@ public class Movement : MonoBehaviour
 
     void ProcessRotation()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || leftRot)
         {
             ApplyRotation(rotateSensivity);
             leftThrusterParticle.Play();
         }
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || rightRot)
         {
             ApplyRotation(-rotateSensivity);
             rightThrusterParticle.Play();
