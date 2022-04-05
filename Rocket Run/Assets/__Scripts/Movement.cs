@@ -17,6 +17,9 @@ public class Movement : MonoBehaviour
     public bool leftRot { get; set; }
     public bool rightRot { get; set; }
 
+    public float thrustForcePower { get => thrustForce; set => thrustForce = value; }
+    public float rotateSensivityValue { get => rotateSensivity; set => rotateSensivity = value; }
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
