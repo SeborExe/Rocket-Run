@@ -797,7 +797,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.5
+  m_Intensity: 0.65
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -2566,18 +2566,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4529393109453844829, guid: 675216d81c435f748a19d9698e911dee, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529393109453844829, guid: 675216d81c435f748a19d9698e911dee, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.078
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529393109453844829, guid: 675216d81c435f748a19d9698e911dee, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -3.58
-      objectReference: {fileID: 0}
     - target: {fileID: 5856516952992592097, guid: 675216d81c435f748a19d9698e911dee, type: 3}
       propertyPath: m_Name
       value: Player
@@ -2625,14 +2613,6 @@ PrefabInstance:
     - target: {fileID: 5856516952992592101, guid: 675216d81c435f748a19d9698e911dee, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6895466474710223269, guid: 675216d81c435f748a19d9698e911dee, type: 3}
-      propertyPath: m_Intensity
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6895466474710223269, guid: 675216d81c435f748a19d9698e911dee, type: 3}
-      propertyPath: m_SpotAngle
-      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 675216d81c435f748a19d9698e911dee, type: 3}
