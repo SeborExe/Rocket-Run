@@ -11,7 +11,9 @@ public class CollisionHandler : MonoBehaviour
     AudioSource audioSource;
 
     bool isTransitioning = false;
-    bool isCrashed = false;
+
+    public bool isCrashed = false;
+    public float maxHeight = 30f;
 
     private void Start()
     {
@@ -46,7 +48,7 @@ public class CollisionHandler : MonoBehaviour
         }
     }
 
-    void StartCrashSequence()
+    public void StartCrashSequence()
     {
         CheckingResult();
         audioSource.PlayOneShot(crashClip);
