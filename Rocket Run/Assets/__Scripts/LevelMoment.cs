@@ -6,11 +6,10 @@ using UnityEngine.UI;
 
 public class LevelMoment : MonoBehaviour
 {
-    Movement playerMovement;
+    [SerializeField] Movement playerMovement;
     [SerializeField] GameObject leftBtn, rightBtn;
     private void Start()
     {
-        playerMovement = FindObjectOfType<Movement>().GetComponent<Movement>();
         int scene = SceneManager.GetActiveScene().buildIndex;
 
         if (scene == 0)

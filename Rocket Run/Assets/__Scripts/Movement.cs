@@ -6,6 +6,7 @@ public class Movement : MonoBehaviour
 {
     Rigidbody rb;
     AudioSource audioSource;
+    CollisionHandler collisionHandler;
 
     [SerializeField] private float thrustForce = 2f;
     [SerializeField] private float rotateSensivity = 0.3f;
@@ -24,6 +25,7 @@ public class Movement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+        collisionHandler = GetComponent<CollisionHandler>();
 
         thrust = false;
         leftRot = false;
@@ -34,6 +36,12 @@ public class Movement : MonoBehaviour
     {
         ProcessThrust();
         ProcessRotation();
+
+        if (transform.position.y >= collisionHandler.maxHeight)
+        {
+            collisionHandler.isCrashed = true;
+            collisionHandler.StartCrashSequence();
+        }
     }
 
     void ProcessThrust()
