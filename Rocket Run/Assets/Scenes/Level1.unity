@@ -3123,6 +3123,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1841099817 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7643671008623509232, guid: 62984763d52e112479c3b7dbce7eca89, type: 3}
+  m_PrefabInstance: {fileID: 7643671007270050773}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1859068304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3322,6 +3327,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4247511293763610, guid: 34c65acd7feb107489a71157e525c9e7, type: 3}
   m_PrefabInstance: {fileID: 1984985043}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2008267277 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8827733297959225927, guid: 94f47e1e27ee0644fa4fe83f55d8fa88, type: 3}
+  m_PrefabInstance: {fileID: 4163965305036028840}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2054196722
 GameObject:
@@ -3622,9 +3632,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 645900243, guid: 7c84e994b8e908c499522361b20315f4, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 5856516952992592104}
+    - target: {fileID: 645900243, guid: 7c84e994b8e908c499522361b20315f4, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 5856516952992592104}
+    - target: {fileID: 645900243, guid: 7c84e994b8e908c499522361b20315f4, type: 3}
+      propertyPath: LandPad
+      value: 
+      objectReference: {fileID: 2008267277}
+    - target: {fileID: 645900243, guid: 7c84e994b8e908c499522361b20315f4, type: 3}
+      propertyPath: MovementButtons
+      value: 
+      objectReference: {fileID: 1841099817}
     - target: {fileID: 731471093391747968, guid: 7c84e994b8e908c499522361b20315f4, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -3632,6 +3654,10 @@ PrefabInstance:
     - target: {fileID: 731471093391747970, guid: 7c84e994b8e908c499522361b20315f4, type: 3}
       propertyPath: m_ClearFlags
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 731471093391747970, guid: 7c84e994b8e908c499522361b20315f4, type: 3}
+      propertyPath: orthographic
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 731471093391747970, guid: 7c84e994b8e908c499522361b20315f4, type: 3}
       propertyPath: m_BackGroundColor.b

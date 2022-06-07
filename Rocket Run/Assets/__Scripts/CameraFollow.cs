@@ -4,17 +4,45 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform target;
+    [Header("Following target")]
     [SerializeField] float minimumX;
     [SerializeField] float maximumX;
     [SerializeField] float offset;
 
+    [Header("Start game")]
+    [SerializeField] float timeLookingOnLandPad = 2f;
+    [SerializeField] Transform Player;
+    [SerializeField] Transform LandPad;
+    [SerializeField] GameObject MovementButtons;
+    float smoothTime = 0.3f;
+    float yVelocity = 0.0f;
+
+    private void Start()
+    {
+        MovementButtons.SetActive(false);
+        transform.position = new Vector3(LandPad.transform.position.x, 10, -23);
+    }
+
     private void LateUpdate()
     {
-        Vector3 position = transform.position;
-        position.x = (target.position.x - offset);
-        position.x = Mathf.Clamp(position.x, minimumX, maximumX);
+        float time = timeLookingOnLandPad -= Time.deltaTime;
+        if (time < 0)
+        {
+            float newPosition = Mathf.SmoothDamp(transform.position.x, Player.position.x, ref yVelocity, smoothTime);
+            newPosition = Mathf.Clamp(newPosition, minimumX, maximumX);
+            transform.position = new Vector3(newPosition, transform.position.y, transform.position.z);
 
-        transform.position = position;
+            if (newPosition <= Player.transform.position.x + 0.1f)
+            {
+                MovementButtons.SetActive(true);
+                float pos;
+                pos = Player.transform.position.x;
+                transform.position = new Vector3(pos, transform.position.y, transform.position.z);
+            }
+        }
+        else
+        {
+            return;
+        }
     }
 }
