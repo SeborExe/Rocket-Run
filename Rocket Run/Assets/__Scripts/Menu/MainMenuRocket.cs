@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainMenuRocket : MonoBehaviour
 {
     [Header("Menu Rocket")]
+    [SerializeField] GameObject rocket;
     Rigidbody rb;
     Camera mainCamera;
 
@@ -17,12 +18,12 @@ public class MainMenuRocket : MonoBehaviour
     private void FixedUpdate()
     {
         CameraFollow();
-        //StartThrusting();
+        StartThrusting();
     }
 
     void StartThrusting()
     {
-        //rb.AddRelativeForce(Vector3.up);
+        rocket.transform.rotation = Quaternion.Euler(0, Time.timeSinceLevelLoad * 2f, 0);
     }
 
     void CameraFollow()
